@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>메인 페이지</title>
+  </head>
+  <link href="/board/css/top.css" rel="stylesheet" type="text/css" />
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      text-align: center;
+    }
+    table th {
+      height: 50px;
+      font-size: 20px;
+    }
+    table td {
+      height: 20px;
+      font-size: 20px;
+    }
+    td a {
+      color: black;
+    }
+    thead {
+      background-color: gray;
+    }
+  </style>
+  <body>
+    <div class="top">
+      <a href="/post/search?keyword=" class="title">board!</a>
+      <span class="menu">
+        <a href="/post/search?keyword=">home</a>
+        <a href="/post/create">write</a>
+        <a href="/user/logIn">LogIn</a>
+      </span>
+      <form method="get" action="/post/search" class="search">
+        <span class="searchBar">
+          <label for="keyword"></label>
+          <input
+            type="text"
+            name="keyword"
+            autocomplete="off"
+            placeholder="검색어를 입력해주세요"
+          />
+          <input type="submit" value="검색" />
+        </span>
+      </form>
+    </div>
+    <table class="list" border="1">
+      <thead>
+        <tr>
+          <th style="width: 450px">제목</th>
+          <th style="width: 250px">작성자</th>
+          <th>조회수</th>
+          <th style="width: 400px">수정일</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%posts.forEach(post => {%>
+        <tr>
+          <td><a href="/post/view/<%=post.postID%>"><%=post.title%></a></td>
+          <td><a href="/user/profile/<%=post.userID%>"><%=post.writer%></a></td>
+          <td><%=post.view%></td>
+          <td><%=post.updatedAt%></td>
+        </tr>
+        <%})%>
+      </tbody>
+    </table>
+  </body>
+</html>

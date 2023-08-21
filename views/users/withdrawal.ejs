@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>정말 탈퇴하시겠습니까?</h1>
+    <h3>한번 삭제된 계정은 복구가 불가능합니다.</h3>
+    <h4>삭제하고 싶으시면 비밀번호를 적어주세요</h4>
+    <form method="post" action="/user?_method=delete">
+      <label for="password">
+        <input name="password" type="password" required
+      /></label>
+      <input type="submit" value="탈퇴" />
+    </form>
+    <form method="get" action="/">
+      <input type="submit" value="돌아가기" />
+    </form>
+  </body>
+</html>

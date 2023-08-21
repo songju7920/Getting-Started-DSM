@@ -1,0 +1,32 @@
+body {
+  border: solid black;
+  margin: 20px 200px 0px;
+}
+
+.top {
+  background-color: black;
+  color: white;
+  font-weight: 600;
+  font-size: 25px;
+}
+
+.title {
+  font-style: italic;
+  font-weight: 600;
+  font-size: 40px;
+  padding: 10px;
+}
+
+.search {
+  display: inline-block;
+}
+
+.top a {
+  color: white;
+  text-decoration: none;
+}
+
+.menu a:hover,
+.menu a:focus {
+  text-decoration: underline;
+}

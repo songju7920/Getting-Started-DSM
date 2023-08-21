@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= post.title %></title>
+    <link href="/board/css/top.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="top">
+      <a href="/post/search?keyword=" class="title">board!</a>
+      <span class="menu">
+        <a href="/post/search?keyword=">home</a>
+        <a href="/post/create">write</a>
+        <a href="/user/logIn">LogIn</a>
+      </span>
+      <form method="get" action="/post/search" class="search">
+        <span class="searchBar">
+          <label for="keyword"></label>
+          <input
+            type="text"
+            name="keyword"
+            autocomplete="off"
+            placeholder="검색어를 입력해주세요"
+          />
+          <input type="submit" value="검색" />
+        </span>
+      </form>
+    </div>
+    <div>
+      <label for="title">제목</label>
+      <input name="title" type="text" value="<%= post.title %>" readonly />
+    </div>
+    <div>
+      <label>이름</label>
+      <input type="text" value="<%= post.writer %>" readonly />
+    </div>
+    <div>
+      <label for="content">내용</label>
+      <textarea readonly><%= post.content %></textarea>
+    </div>
+    <%if(user.userID == post.userID) {%>
+    <form method="get" action="/post/update/<%= post.postID %>">
+      <input type="submit" value="글 수정" />
+    </form>
+    <form method="post" action="/post/delete/<%= post.postID %>?_method=delete">
+      <input type="submit" value="글 삭제" />
+    </form>
+    <%}%>
+  </body>
+</html>

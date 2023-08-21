@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form method="post" action="/user/password?_method=patch">
+      <h1>비밀번호 바꾸기</h1>
+      <label for="password">현재 비밀번호:</label>
+      <input required type="password" name="password" /><br />
+      <label for="newPassword">변경할 비밀번호:</label>
+      <input required type="password" name="newPassword" /><br />
+      <input type="submit" value="확인" />
+    </form>
+    <form action="/">
+      <input type="submit" value="취소" />
+    </form>
+  </body>
+</html>
