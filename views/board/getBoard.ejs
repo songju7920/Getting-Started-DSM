@@ -15,18 +15,24 @@
         <a href="/user/logIn">LogIn</a>
       </span>
       <form method="get" action="/post/search" class="search">
-        <span class="searchBar">
+        <div>
           <label for="keyword"></label>
           <input
+            class="searchBar"
             type="text"
             name="keyword"
             autocomplete="off"
             placeholder="검색어를 입력해주세요"
           />
-          <input type="submit" value="검색" />
-        </span>
+          <input
+            class="searchBut"
+            type="image"
+            src="/board/img/search"
+          />
+        </div>
       </form>
     </div>
+    <hr />
     <div>
       <label for="title">제목</label>
       <input name="title" type="text" value="<%= post.title %>" readonly />
