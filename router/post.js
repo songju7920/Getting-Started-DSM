@@ -11,6 +11,6 @@ router.post("/create", authMiddleWare, post.createPost);
 router.get("/view/:postID", authMiddleWare, post.getPost);
 router.get("/search", post.getPostList);
 router.patch("/:postID", authMiddleWare, post.updatePost);
-router.delete("delete/:postID", authMiddleWare, post.deletePost);
+router.delete("/delete/:postID", authMiddleWare, post.deletePost);
 
 module.exports = router;

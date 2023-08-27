@@ -69,6 +69,10 @@ const getPost = async (req, res) => {
       });
     }
 
+    thisPost.update({
+      views: (thisPost.views += 1),
+    });
+
     return res.render("../views/board/getboard", { post: thisPost, user });
   } catch (err) {
     return res.status(400).json({

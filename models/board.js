@@ -23,13 +23,13 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     content: {
-      type: DataTypes.STRING(),
+      type: DataTypes.STRING(255),
       allowNull: false,
     },
-    isSold: {
-      type: DataTypes.BOOLEAN(),
-      defaultValue: true,
+    views: {
+      type: DataTypes.INTEGER(),
       allowNull: false,
+      defaultValue: 0,
     },
   });
 };
