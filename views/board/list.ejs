@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>메인 페이지</title>
+  </head>
+  <link href="/board/css/top.css" rel="stylesheet" type="text/css" />
+  <style>
+    .container {
+      margin: 100px 150px;
+    }
+    .headContainer {
+      display: flex;
+      justify-content: start;
+    }
+    .createPost {
+      display: flex;
+      justify-content: flex-end;
+      flex-grow: 1;
+    }
+    .createPost > span {
+      padding: 0px 10px;
+    }
+    .createPost > input {
+      padding: 0px 10px;
+      border-radius: 10px;
+    }
+    table {
+      margin-top: 20px;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    tr {
+      border-bottom: solid black 1px;
+    }
+    thead > tr {
+      border-bottom: solid #a6a6a6 3px;
+    }
+    td {
+      padding-left: 20px;
+    }
+    td:first-child {
+      padding: 0px;
+      text-align: center;
+      width: 50px;
+    }
+    td:nth-child(2) {
+      width: 100px;
+    }
+    td:nth-child(4) {
+      width: 50px;
+      text-align: center;
+    }
+    td:last-child {
+      width: 50px;
+      text-align: right;
+      padding-right: 20px;
+    }
+    td > a {
+      color: black;
+      text-decoration: none;
+    }
+  </style>
+  <body>
+    <%- include('./layout/header') %>
+    <div class="container">
+      <div class="headContainer">
+        <span><%= posts.length %>건의 글이 있습니다.</span>
+        <form action="/post/create" method="get" class="createPost">
+          <span>찾으시는 글이 없으신가요?</span>
+          <input type="submit" value="직접 질문하기" />
+        </form>
+      </div>
+      <table>
+        <thead>
+          <td>No</td>
+          <td>Writer</td>
+          <td>Title</td>
+          <td>views</td>
+          <td>Date</td>
+        </thead>
+        <tbody>
+          <% posts.forEach((post) => {%>
+          <tr>
+            <td><%= post.postID %></td>
+            <td><%= post.writer %></td>
+            <td><a href="/post/view/<%= post.postID %>"><%= post.title %><a></td>
+            <td><%= post.views %></td>
+            <td><%= moment(post.createdAt).format("YYYY/MM/DD") %></td>
+          </tr>
+          <%})%>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

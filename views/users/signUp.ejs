@@ -5,21 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
+  <style>
+    .formContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    input {
+      border-radius: 5px;
+      height: 50px;
+      width: 293px;
+    }
+    .signUpBut {
+      margin-top: 10px;
+      width: 300px;
+    }
+  </style>
   <body>
-    <h1>BOARD에 오신걸 환영해요!</h1>
-    <h3>BOARD를 사용하기 위해서 몇가지만 알려주세요!</h3>
-    <form method="post" action="/user/signUp">
-      <label for="userName">닉네임 :</label>
-      <input name="userName" type="text" required /><br />
-      <label for="email">이메일 :</label>
-      <input name="email" type="email" required /><br />
-      <label for="password">비밀번호 :</label>
-      <input name="password" type="password" required /><br />
-      <input type="submit" value="회원가입" />
-    </form>
-    <br />
-    <form method="get" action="/user/logIn">
-      <input type="submit" value="로그인 화면으로 돌아가기" />
-    </form>
+    <div class="formContainer">
+      <h1>BOARD에 오신걸 환영해요!</h1>
+      <h3>BOARD를 사용하기 위해서 몇가지만 알려주세요!</h3>
+      <br /><br />
+      <form method="post" action="/user/signUp">
+        <label for="userName"></label>
+        <input
+          name="userName"
+          type="text"
+          required
+          placeholder="닉네임을 알려주세요!"
+          autocomplete="off"
+        /><br />
+        <label for="email"></label>
+        <input
+          name="email"
+          type="email"
+          required
+          placeholder="email을 알려주세요!"
+          autocomplete="off"
+        /><br />
+        <label for="password"></label>
+        <input
+          name="password"
+          type="password"
+          required
+          placeholder="비밀번호를 알려주세요!"
+          autocomplete="off"
+        /><br />
+        <input type="submit" value="회원가입" class="signUpBut" />
+      </form>
+      <br />
+      <form method="get" action="/user/logIn">
+        <input type="submit" value="로그인 화면으로 돌아가기" />
+      </form>
+    </div>
   </body>
 </html>

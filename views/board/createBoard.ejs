@@ -6,84 +6,79 @@
     <title>글 등록 페이지</title>
     <link href="/board/css/top.css" type="text/css" rel="stylesheet" />
     <style>
-      hr + form {
-        margin: 0px 150px;
+      #postContainer {
+        background-color: #ebebeb;
+        padding-bottom: 20px;
+        margin: 40px 150px 40px;
       }
-      div.butContainer {
-        display: flex;
-        justify-content: flex-end;
-      }
-      .submitBut {
-        margin-top: 5px;
-        width: 70px;
-        height: 30px;
-        border-radius: 40px;
-        border: blue solid;
-        background-color: blue;
-        color: white;
-        font-weight: 800;
+      #formContainer {
+        display: inline-block;
+        text-align: center;
       }
       .postTitle {
-        margin: 10px 0px;
-        width: 1200px;
-        height: 100px;
-        border-radius: 40px;
-        font-size: 40px;
+        margin: 50px 0px 20px;
+        width: 1100px;
+        height: 70px;
+        border-radius: 10px;
+        font-size: 20px;
         padding-left: 40px;
+        background: #d9d9d9;
       }
       textarea {
+        border-radius: 10px;
+        width: 1084px;
+        height: 350px;
+        padding: 20px 30px 0px;
+        background: #d9d9d9;
+      }
+      #formContainer > form {
+        display: inline-block;
+      }
+      #butContainer > input {
         border-radius: 40px;
-        width: 1180px;
-        height: 400px;
-        padding: 20px 30px 20px;
+        background: #d9d9d9;
+        border: #d9d9d9 solid;
+        width: 100px;
+        height: 45px;
+        margin-top: 5px;
+        color: #000;
+        font-family: Inter;
+        font-size: 15px;
+        font-weight: 300;
+      }
+      form {
+        margin-left: 10px;
+        display: inline-block;
+      }
+      #butContainer {
+        display: flex;
+        justify-content: flex-end;
+        margin: 20px 40px 10px;
       }
     </style>
   </head>
   <body>
-    <div class="top">
-      <a href="/post/search?keyword=" class="title">board!</a>
-      <span class="menu">
-        <a href="/post/search?keyword=">home</a>
-        <a href="/post/create">write</a>
-        <a href="/user/logIn">LogIn</a>
-      </span>
-      <form method="get" action="/post/search" class="search">
-        <div>
-          <label for="keyword"></label>
-          <input
-            class="searchBar"
-            type="text"
-            name="keyword"
-            autocomplete="off"
-            placeholder="검색어를 입력해주세요"
-          />
-          <input class="searchBut" type="image" src="/board/img/search" />
-        </div>
-      </form>
+    <%- include('./layout/header') %>
+    <div id="postContainer">
+      <div id="formContainer">
+        <form action="/post/create" method="post">
+          <div class="post">
+            <input
+              name="title"
+              class="postTitle"
+              type="text"
+              placeholder="궁금한 질문을 대표할만한 제목을 적어주세요!"
+            />
+            <textarea
+              name="content"
+              placeholder="궁금한 질문을 자유롭게 적어주세요!"
+            ></textarea>
+          </div>
+          <div id="butContainer">
+            <input type="submit" value="글 작성" />
+          </div>
+        </form>
+      </div>
     </div>
-    <hr />
-    <form method="post" action="/post/create">
-      <div>
-        <label for="title"></label>
-        <input
-          class="postTitle"
-          name="title"
-          type="text"
-          placeholder="제목을 입력해주세요"
-          required
-        />
-      </div>
-      <div>
-        <label for="content"></label>
-        <textarea
-          name="content"
-          placeholder="내용을 입력해주세요"
-          required
-        ></textarea>
-      </div>
-      <div class="butContainer">
-        <input class="submitBut" type="submit" value="POST" />
-      </div>
-    </form>
   </body>
 </html>

@@ -1,57 +1,116 @@
-.top {
-  margin-left: 30px;
-  color: #000;
-  margin-bottom: 10px;
+body {
+  margin: 0;
+  padding: 0;
 }
-
-.menu {
-  margin: 20px;
-  font-family: Inter;
-  font-size: 30px;
-  font-style: normal;
-  font-weight: 300;
-  line-height: normal;
+#introContainer {
+  background-color: black;
+  width: 100%;
+  height: 53px;
+  flex-shrink: 0;
 }
-
-.title {
-  color: rgba(48, 48, 48, 0);
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+.intro {
+  padding: 12px;
+  text-align: center;
+}
+.intro > span {
+  color: #fff;
   font-family: Inter;
-  font-size: 48px;
-  font-style: normal;
+  font-size: 20px;
   font-weight: 800;
   line-height: normal;
 }
-
-.search {
-  display: inline-block;
-  position: relative;
-  width: 400px;
+span.s1 {
+  color: #1eb5e1;
 }
-
-.searchBar {
-  margin-left: 600px;
+span.s2 {
+  color: #fbca5c;
+}
+span.s3 {
+  color: #e83659;
+}
+#menuContainer {
   width: 100%;
-  padding: 10px 12px;
-  border-radius: 40px;
-  border: 1px solid #000;
-  background: #fff;
+  height: 147px;
+  flex-shrink: 0;
+  background: #ececec;
 }
-
+.menu {
+  display: flex;
+  align-items: center;
+  padding: 35px 40px;
+}
+.menuList {
+  list-style: none;
+  padding: 0px 60px;
+}
+.menuList > li {
+  display: inline;
+  padding: 0px 30px;
+}
+.searchBar {
+  display: flex;
+  border-radius: 30px;
+  width: 514px;
+  height: 15px;
+  flex-shrink: 0;
+  padding: 15px;
+}
 .searchBut {
+  width: 20px;
+  height: 20px;
   position: absolute;
-  width: 17px;
-  top: 10px;
-  right: -600px;
-  margin: 0;
+  right: 25px;
+  top: 13px;
 }
-
-.top a {
+#userContainer {
+  padding: 0px 40px;
+}
+.userBar {
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+#searchContainer {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
+}
+#introduction {
+  position: relative;
+}
+.schoolImg {
+  width: 100%;
+  height: 381px;
+  flex-shrink: 0;
+}
+.schoolIntro {
   color: #000;
-  text-decoration: none;
+  font-family: D2Coding ligature;
+  font-size: 40px;
+  font-weight: 700;
+  position: absolute;
+  right: 80px;
+  top: 85px;
 }
-
-.menu a:hover,
-.menu a:focus {
-  text-decoration: underline;
+.helloMes {
+  display: flex;
+  justify-content: end;
+  height: 309px;
+  flex-shrink: 0;
+  color: #000;
+  font-family: Inter;
+  font-size: 15px;
+  font-weight: 500;
+  padding-top: 10px;
+  padding-right: 40px;
+}
+.helloMesWrite {
+  color: #000;
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 800;
+}
+.menuList > li > a {
+  text-decoration: none;
+  color: black;
 }

@@ -3,108 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>메인 페이지</title>
+    <title>Document</title>
+    <link href="/board/css/top.css" rel="stylesheet">
   </head>
-  <link href="/board/css/top.css" rel="stylesheet" type="text/css" />
-  <style>
-    .container {
-      margin: 0px 150px;
-    }
-    .postContainer {
-      position: relative;
-      height: 100px;
-      flex-shrink: 0;
-      border-radius: 40px;
-      border: 2px solid #000;
-      background: #fff;
-      margin: 10px 0px;
-    }
-    .post {
-      margin: 10px 20px;
-      display: inline-block;
-    }
-    .postInfoLeft {
-      display: inline-block;
-      width: 300px;
-    }
-    .postInfoRight {
-      display: inline-block;
-      width: 750px;
-      position: absolute;
-      top: 15px;
-      left: 300px;
-    }
-    .postTitle {
-      display: inline-block;
-      font-size: 35px;
-      width: 250px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      color: #000;
-      text-decoration: none;
-    }
-    .writer {
-      color: #000;
-      text-decoration: none;
-    }
-    .content {
-      display: inline-block;
-      word-break: break-all;
-      width: 850px;
-      line-height: 1.2;
-      height: 3.6em;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      text-align: left;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-    }
-  </style>
   <body>
-    <div class="top">
-      <a href="/post/search?keyword=" class="title">board!</a>
-      <span class="menu">
-        <a href="/post/search?keyword=">home</a>
-        <a href="/post/create">write</a>
-        <a href="/user/logIn">LogIn</a>
-      </span>
-      <form method="get" action="/post/search" class="search">
-        <div>
-          <label for="keyword"></label>
-          <input
-            class="searchBar"
-            type="text"
-            name="keyword"
-            autocomplete="off"
-            placeholder="검색어를 입력해주세요"
-          />
-          <input class="searchBut" type="image" src="/board/img/search" />
-        </div>
-      </form>
-    </div>
-    <hr />
-    <div class="container">
-      <%posts.forEach(post => {%>
-      <div class="postContainer">
-        <div class="post">
-          <div class="postInfoLeft">
-            <a href="/post/view/<%=post.postID%>" class="postTitle">
-              <%=post.title%>
-            </a>
-            <br />
-            <a href="/user/profile/<%=post.userID%>" class="writer">
-              <%=post.writer%>
-            </a>
-          </div>
-          <div class="postInfoRight">
-            <%=post.view%> <%=post.updatedAt%> <br />
-            <div class="content"><%=post.content%></div>
-          </div>
-        </div>
-      </div>
-      <%})%>
-    </div>
+    <%- include('./layout/header')%>
+    <div id="introduction">
+      <img class="schoolImg" src="/board/img/schoolImg.png" />
+      <p class="schoolIntro">
+        대한민국 IT인재 육성의 최전선<br />
+        대덕 SW 마이스터고
+      </p>
   </body>
 </html>

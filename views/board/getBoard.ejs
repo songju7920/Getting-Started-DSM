@@ -6,52 +6,90 @@
     <title><%= post.title %></title>
     <link href="/board/css/top.css" type="text/css" rel="stylesheet" />
   </head>
+  <style>
+    .writerHr {
+      width: 1200px;
+    }
+    .writer {
+      margin: 20px 170px 0px;
+    }
+    #postContainer {
+      background-color: #ebebeb;
+      padding-bottom: 20px;
+      margin: 0px 150px 40px;
+    }
+    .post {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .postTitle {
+      margin: 50px 0px 20px;
+      width: 1100px;
+      height: 70px;
+      border-radius: 10px;
+      font-size: 20px;
+      padding-left: 40px;
+      background: #d9d9d9;
+    }
+    textarea {
+      border-radius: 10px;
+      width: 1084px;
+      height: 350px;
+      padding: 20px 30px 0px;
+      background: #d9d9d9;
+    }
+    .formContainer {
+      margin: 20px 40px 10px;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .formContainer > form > input {
+      border-radius: 40px;
+      background: #d9d9d9;
+      border: #d9d9d9 solid;
+      width: 100px;
+      height: 45px;
+      margin-top: 5px;
+      color: #000;
+      font-family: Inter;
+      font-size: 15px;
+      font-weight: 300;
+    }
+    form {
+      margin-left: 10px;
+      display: inline-block;
+    }
+  </style>
   <body>
-    <div class="top">
-      <a href="/post/search?keyword=" class="title">board!</a>
-      <span class="menu">
-        <a href="/post/search?keyword=">home</a>
-        <a href="/post/create">write</a>
-        <a href="/user/logIn">LogIn</a>
-      </span>
-      <form method="get" action="/post/search" class="search">
-        <div>
-          <label for="keyword"></label>
-          <input
-            class="searchBar"
-            type="text"
-            name="keyword"
-            autocomplete="off"
-            placeholder="검색어를 입력해주세요"
-          />
-          <input
-            class="searchBut"
-            type="image"
-            src="/board/img/search"
-          />
-        </div>
-      </form>
+    <%- include('./layout/header') %>
+    <div class="writer"><%= post.writer %>님 질문</div>
+    <hr class="writerHr" />
+    <div id="postContainer">
+      <div class="post">
+        <input
+          name="title"
+          class="postTitle"
+          type="text"
+          value="<%= post.title %>"
+          readonly
+        />
+        <textarea readonly><%= post.content %></textarea>
+      </div>
+      <%if(user.userID == post.userID) {%>
+      <div class="formContainer">
+        <form method="get" action="/post/update/<%= post.postID %>">
+          <input type="submit" value="글 수정" />
+        </form>
+        <form
+          method="post"
+          action="/post/delete/<%= post.postID %>?_method=delete"
+        >
+          <input type="submit" value="글 삭제" />
+        </form>
+      </div>
+      <%}%>
     </div>
-    <hr />
-    <div>
-      <label for="title">제목</label>
-      <input name="title" type="text" value="<%= post.title %>" readonly />
-    </div>
-    <div>
-      <label>이름</label>
-      <input type="text" value="<%= post.writer %>" readonly />
-    </div>
-    <div>
-      <label for="content">내용</label>
-      <textarea readonly><%= post.content %></textarea>
-    </div>
-    <%if(user.userID == post.userID) {%>
-    <form method="get" action="/post/update/<%= post.postID %>">
-      <input type="submit" value="글 수정" />
-    </form>
-    <form method="post" action="/post/delete/<%= post.postID %>?_method=delete">
-      <input type="submit" value="글 삭제" />
-    </form>
-    <%}%>
   </body>
 </html>
