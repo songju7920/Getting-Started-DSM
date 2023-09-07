@@ -1,5 +1,6 @@
 const { post } = require("../models");
 const { Op } = require("sequelize");
+const moment = require("moment");
 
 //화면이동
 //글 등록 화면으로 이동 (구현 완료)
@@ -35,6 +36,7 @@ const moveToUpdatePost = async (req, res) => {
 const createPost = async (req, res) => {
   const user = req.decoded;
   const { title, content } = req.body;
+  const date = new Date();
 
   try {
     await post.create({
@@ -44,7 +46,7 @@ const createPost = async (req, res) => {
       content,
     });
 
-    return res.redirect("/");
+    return res.redirect("/post/search?keyword=");
   } catch (err) {
     console.error(err);
     return res.status(400).json({
@@ -95,7 +97,8 @@ const getPostList = async (req, res) => {
       },
     });
 
-    return res.render("board/index", { keyword, posts });
+    posts.reverse();
+    return res.render("board/list", { keyword, posts, moment });
   } catch (err) {
     console.error(err);
     return res.status(400).json({
@@ -126,7 +129,7 @@ const updatePost = async (req, res) => {
       content,
     });
 
-    return res.redirect("/");
+    return res.redirect("/post/search?keyword=");
   } catch (err) {
     console.error(err);
     return res.status(400).json({
@@ -161,7 +164,7 @@ const deletePost = async (req, res) => {
       where: { postID },
     });
 
-    return res.redirect("/");
+    return res.redirect("/post/search?keyword=");
   } catch (err) {
     console.error(err);
     return res.status(400).json({
