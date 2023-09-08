@@ -22,7 +22,7 @@ module.exports = (sequelize, Datatypes) => {
         key: "postID",
       },
     },
-    body: {
+    content: {
       type: Datatypes.STRING(225),
       allowNull: false,
     },
