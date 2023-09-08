@@ -9,11 +9,15 @@
     </div>
     <div id="menuContainer">
       <div class="menu">
-        <img src="/board/img/Logo.png" />
+        <img src="/img/Logo.png" />
         <ul class="menuList">
           <li><a href="/">홈<a></li>
           <li><a href="/post/search?keyword=">QnA</a></li>
-          <li><a href="/user/profile/1">마이페이지</a></li>
+          <% if(isLogined == true) { %>
+          <li><a href="/user/getProfile">마이페이지</a></li>
+          <% } else { %>
+          <li><a href="/user/logIn">로그인</a></li>
+          <% } %>
         </ul>
         <form action="/post/search" method="get" id="searchContainer">
           <label for="keyword">
