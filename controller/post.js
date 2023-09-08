@@ -6,7 +6,13 @@ const moment = require("moment");
 //글 등록 화면으로 이동 (구현 완료)
 const moveToCreatePost = async (req, res) => {
   const user = req.decoded;
-  return res.render("../views/board/createBoard", { user });
+
+  let isLogined = false;
+  if (req.session.access_token) {
+    isLogined = true;
+  }
+
+  return res.render("../views/board/createBoard", { user, isLogined });
 };
 
 //글 수정 화면으로 이동 (구현 완료)
@@ -23,7 +29,15 @@ const moveToUpdatePost = async (req, res) => {
       });
     }
 
-    return res.render("../views/board/updateBoard", { post: thisPost });
+    let isLogined = false;
+    if (req.session.access_token) {
+      isLogined = true;
+    }
+
+    return res.render("../views/board/updateBoard", {
+      post: thisPost,
+      isLogined,
+    });
   } catch (err) {
     return res.status(400).json({
       massage: "요청에 실패했습니다.",
@@ -36,7 +50,6 @@ const moveToUpdatePost = async (req, res) => {
 const createPost = async (req, res) => {
   const user = req.decoded;
   const { title, content } = req.body;
-  const date = new Date();
 
   try {
     await post.create({
@@ -75,7 +88,15 @@ const getPost = async (req, res) => {
       views: (thisPost.views += 1),
     });
 
-    return res.render("../views/board/getboard", { post: thisPost, user });
+    let isLogined = false;
+    if (req.session.access_token) {
+      isLogined = true;
+    }
+    return res.render("../views/board/getboard", {
+      post: thisPost,
+      user,
+      isLogined,
+    });
   } catch (err) {
     return res.status(400).json({
       massage: "요청에 실패했습니다.",
@@ -98,7 +119,13 @@ const getPostList = async (req, res) => {
     });
 
     posts.reverse();
-    return res.render("board/list", { keyword, posts, moment });
+
+    let isLogined = false;
+    if (req.session.access_token) {
+      isLogined = true;
+    }
+
+    return res.render("board/list", { keyword, posts, moment, isLogined });
   } catch (err) {
     console.error(err);
     return res.status(400).json({
