@@ -5,22 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>logIn</title>
     <style>
-      .container {
+      body {
         display: flex;
         align-items: center;
         flex-direction: column;
         justify-content: center;
       }
-
-      .logo {
-        color: black;
-        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        font-family: Inter;
-        font-size: 48px;
-        font-style: normal;
-        font-weight: 800;
-        line-height: normal;
+      #container {
+        margin-top: 120px;
+        width: 350px;
+        height: 400px;
+        border: black solid;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
       }
+      span {
+        padding-bottom: 20px;
+      }
+      img {
+        margin: 20px 0px;
+      }
+
       input {
         border-radius: 5px;
         height: 50px;
@@ -33,9 +40,9 @@
     </style>
   </head>
   <body>
-    <div class="container">
-      <h1 class="logo">Board!</h1>
-      <h3><%=message%></h3>
+    <div id="container">
+      <img src="/img/Logo.png" />
+      <span><%=message%></span>
       <form method="post" action="/user/logIn">
         <label for="userName"></label>
         <input
@@ -55,7 +62,9 @@
         /><br />
         <input type="submit" class="loginBut" value="로그인" />
       </form>
-      <span style="margin-top: 10px;">계정이 없으신가요? <a href="/user/signUp">회원가입</a></span>
+      <span style="margin-top: 10px"
+        >계정이 없으신가요? <a href="/user/signUp">회원가입</a></span
+      >
     </div>
   </body>
 </html>
