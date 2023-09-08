@@ -1,5 +1,3 @@
-const tokenMiddleWare = require("../middleware/token");
-
 module.exports = (req, res) => {
   let isLogined = false;
   let user = null;
